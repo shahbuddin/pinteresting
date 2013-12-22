@@ -1,7 +1,18 @@
-$body-bg: 	#2980b9;
-$navbar-default-bg: 	#2980b9;
-$navbar-default-link-color: white;
-$brand-primary: #e67e22;
-$jumbotron-bg: #2980b9;
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+
+$body-bg: 				#2980b9;
+$navbar-default-bg: 			#2980b9;
+$navbar-default-border: 		#2980b9;
+$navbar-default-link-color: 		white;
+$brand-primary: 			#e67e22;
+$jumbotron-bg: 			#2980b9;
+$jumbotron-heading-color: 		white;
+
 
 @import 'bootstrap';
+
+.center {
+	text-align: center;
+}
+
