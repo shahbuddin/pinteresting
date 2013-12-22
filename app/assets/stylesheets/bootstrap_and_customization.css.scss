@@ -5,9 +5,12 @@ $font-family-sans-serif: 		'Quicksand', 'Helvitica Neue', 'Helvetica', 'Arial', 
 $navbar-default-bg: 			#2980b9;
 $navbar-default-border: 		#2980b9;
 $navbar-default-link-color: 		white;
+$nav-link-hover-bg:			white;
+$nav-open-link-hover-color:		white;
 $brand-primary: 			#e67e22;
 $jumbotron-bg: 			#2980b9;
 $jumbotron-heading-color: 		white;
+
 
 
 @import 'bootstrap';
@@ -32,3 +35,4 @@ $jumbotron-heading-color: 		white;
 	font-family:			'Quicksand', sans-serif;
 
 }
+
