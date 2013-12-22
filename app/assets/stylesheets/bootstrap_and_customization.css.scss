@@ -1,7 +1,7 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
-
+@import url(http://fonts.googleapis.com/css?family=Quicksand:300,400);
 
 $body-bg: 				#2980b9;
+$font-family-sans-serif: 		'Quicksand', 'Helvitica Neue', 'Helvetica', 'Arial', 'sans-serif';
 $navbar-default-bg: 			#2980b9;
 $navbar-default-border: 		#2980b9;
 $navbar-default-link-color: 		white;
@@ -14,5 +14,22 @@ $jumbotron-heading-color: 		white;
 
 .center {
 	text-align: center;
+}
+
+.jumbotron h1 {
+	color: 				white;
+	margin:			0;
+	font-size:			2em;
+	font-family:			'Quicksand', sans-serif;
+
+}
+
+.jumbotron h2 {
+	color: 				white;
+	margin:			0.4em 0 2em;
+	line-height:			1.5em;
+	font-size:			1.15em;
+	font-family:			'Quicksand', sans-serif;
+
 }
 
