@@ -1,3 +1,3 @@
 # Pinteresting
 
-Pinterest clone by [Sarosh Shahbuddin](http://saroshshahbuddin.wordpress.com)
+Purge Off Competition Application by [Sarosh Shahbuddin](http://saroshshahbuddin.wordpress.com)
