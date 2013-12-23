@@ -5,6 +5,10 @@
 	</hgroup>
 	
 	<div class="mod-signup">
-		<%= link_to "Sign up for free", "#", class: "btn btn-primary btn-lg" %>
+		<% if user_signed_in? %>
+		Show Dashboard Here
+		<% else %>
+			<%= link_to "Sign up for free", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+		<% end %>
 	</div>
 </div>

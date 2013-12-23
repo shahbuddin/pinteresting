@@ -28,6 +28,8 @@ gem 'jbuilder', '~> 1.2'
 # Use Bootstrap for front end development
 gem 'bootstrap-sass'
 
+# Devise for authentication
+gem "devise", "~> 3.2.2"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
