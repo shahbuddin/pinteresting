@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Date</th>
+      <th>User</th>
       <th>Weight</th>
       <th></th>
       <th></th>
@@ -15,10 +16,17 @@
     <% @weights.each do |weight| %>
       <tr>
         <td><%= weight.created_at.to_date %></td>
+        <td><%= weight.user.email if weight.user %></td>
         <td><%= weight.weight %></td>
         <td><%= link_to 'Show', weight %></td>
-        <td><%= link_to 'Edit', edit_weight_path(weight) %></td>
-        <td><%= link_to 'Destroy', weight, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <% if weight.user == current_user %>
+
+          <td><%= link_to 'Edit', edit_weight_path(weight) %></td>
+          <td><%= link_to 'Destroy', weight, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <% end %>
+      
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +34,7 @@
 
 <br>
 
-<%= link_to 'New Weight', new_weight_path %>
+
+<% if user_signed_in? %>
+    <%= link_to 'New Weight', new_weight_path %>
+<% end %>

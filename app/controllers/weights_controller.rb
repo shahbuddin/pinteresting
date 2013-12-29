@@ -1,5 +1,7 @@
 class WeightsController < ApplicationController
   before_action :set_weight, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /weights
   # GET /weights.json
@@ -14,7 +16,7 @@ class WeightsController < ApplicationController
 
   # GET /weights/new
   def new
-    @weight = Weight.new
+    @weight = current_user.weights.build
   end
 
   # GET /weights/1/edit
@@ -24,7 +26,7 @@ class WeightsController < ApplicationController
   # POST /weights
   # POST /weights.json
   def create
-    @weight = Weight.new(weight_params)
+    @weight = current_user.weights.build(weight_params)
 
     respond_to do |format|
       if @weight.save
@@ -65,6 +67,11 @@ class WeightsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_weight
       @weight = Weight.find(params[:id])
+    end
+
+    def correct_user
+      @weight = current_user.weights.find_by(id: params[:id])
+      redirect_to weights_path, notice: "Not authorized to edit this weight log" if @weight.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
