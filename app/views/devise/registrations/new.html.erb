@@ -13,6 +13,7 @@
 			  	<%= f.label :email %><br />
 				<%= f.email_field :email, :autofocus => true, class: "form-control" %>
 			</div>
+	
 
 			  <div class="form-group">
 				<%= f.label :password %><br />
@@ -23,6 +24,20 @@
 			  	<%= f.label :password_confirmation %><br />
 			  	<%= f.password_field :password_confirmation, class: "form-control" %>
 			  </div>
+
+
+			  <div class="form-group">
+			  	<%= f.label :office %><br />			  	
+				<%= f.select :user_location, options_for_select([["Atlanta", "a"], ["Cambridge", "c"], ["San Mateo", "s"]]), class: "form-control" %>
+					
+			  </div>
+
+
+			  <div class="form-group">
+			  	<%= f.label :team %><br />			  	
+				<%= f.select :user_team, options_for_select(["Protect", "Perform"]), class: "form-control" %>
+			  </div>
+
 
 			  <div class="form-group">
 			  	<%= f.submit "Sign up", class: "btn btn-primary" %>
