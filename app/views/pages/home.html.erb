@@ -67,18 +67,57 @@
 
 			            <tbody>
 
+		            	<% atlanta_weight_array = Array.new %>
+		            	<% @atlanta = @users.select { |user| user.user_location == 'Atlanta'} %>
+
+		            	<% @atlanta.each do |user| %>
+		            		<% user.weights.last.weight %>
+		            		<% atlanta_weight_array.push((user.weights.last.weight - user.weights.first.weight).abs) %>
+		            	<% end %>
+
+
 		                	<tr>
 			                        <td>Atlanta</td>
-			                        <td>100</td>	
+			                        <% if atlanta_weight_array.empty? %>
+			                        	<td>0</td>
+		                        	<% else%> 
+			                        	<td><%= atlanta_weight_array.inject(:+) %></td>
+		                        	<% end %>	
 		                	</tr>
+
+
+		                	<% cambridge_weight_array = Array.new %>
+		                	<% @cambridge = @users.select { |user| user.user_location == 'Cambridge'} %>
+
+		                	<% @cambridge.each do |user| %>
+		                		<% user.weights.last.weight %>
+		                		<% cambridge_weight_array.push((user.weights.last.weight - user.weights.first.weight).abs) %>
+		                	<% end %>
 
 		                	<tr>
 			                        <td>Cambridge</td>
-			                        <td>50</td>	
+			                        <% if cambridge_weight_array.empty? %>
+			                        	<td>0</td>
+		                        	<% else%> 
+			                        	<td><%= cambridge_weight_array.inject(:+) %></td>
+			                        <% end %>	
 		                	</tr>
+		                	
+			             <% san_mateo_weight_array = Array.new %>
+			             <% @san_mateo = @users.select { |user| user.user_location == 'San Mateo'} %>
+
+			             <% @san_mateo.each do |user| %>
+			             	<% user.weights.last.weight %>
+			             	<% san_mateo_weight_array.push((user.weights.last.weight - user.weights.first.weight).abs) %>
+			             <% end %>   	
+
 		                	<tr>
 			                        <td>San Mateo</td>
-			                        <td>70</td>	
+			                        <% if san_mateo_weight_array.empty? %>
+			                        	<td>0</td>
+		                        	<% else%> 	
+		                        		<td><%= san_mateo_weight_array.inject(:+) %></td>
+	                        		<% end %>
 		                	</tr>
 
 			            </tbody>
@@ -106,14 +145,37 @@
 
 			            <tbody>
 
+		            	<% protect_weight_array = Array.new %>
+			             <% @protect_users = @users.select { |user| user.user_team == 'Protect'} %>
+
+			             <% @protect_users.each do |user| %>
+			             	<% user.weights.last.weight %>
+			             	<% protect_weight_array.push ((user.weights.last.weight - user.weights.first.weight).abs) %>
+			             <% end %>   	
+
 		                	<tr>
 			                        <td>Protect</td>
-			                        <td>100</td>	
+			                        <% if protect_weight_array.empty? %>
+			                        	<td>0</td>
+		                        	<% else%> 	
+			                        	<td><%= protect_weight_array.inject(:+) %></td>	
+		                        	<% end %>
 		                	</tr>
+
+		            	<% perform_weight_array = Array.new %>
+			             <% @perform_users = @users.select { |user| user.user_team == 'Perform'} %>
+
+			             <% @perform_users.each do |user| %>
+			             	<% perform_weight_array.push ((user.weights.last.weight - user.weights.first.weight).abs) %>
+			             <% end %> 
 
 		                	<tr>
 			                        <td>Perform</td>
-			                        <td>50</td>	
+			                        <% if perform_weight_array.empty? %>
+			                        	<td>0</td>
+		                        	<% else%> 	
+			                        	<td><%= perform_weight_array.inject(:+) %></td>	
+		                        	<% end %>
 		                	</tr>
 
 			            </tbody>
