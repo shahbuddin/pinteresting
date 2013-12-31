@@ -1,24 +1,123 @@
-<div class="jumbotron center">
-	<hgroup>
-		<h1>Purge off the weight for 2014</h1>
-		<h2>Protect versus Perform, which side are you on?</h2>
-	</hgroup>
-	
-	<div class="mod-signup">
-		<% if user_signed_in? %>
-			
-  			<div>Signed in as... <%= current_user.email %></div>
-			<div>Show Dashboard Here</div>
+<% if !user_signed_in? %>
+	<div class="jumbotron center">
+		<hgroup>
+			<h1>Purge off the weight for 2014</h1>
+			<h2>Protect versus Perform, which side are you on?</h2>
+		</hgroup>
+
+		<%= link_to "Sign up for free", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+	</div>
+<% else %>    
+
+	<div class="panel panel-default" style="margin: 2em 0 1.5em">
+
+		<div class="panel-heading center">
+			<h2>Dashboard</h2>
+		</div>
+
+		<div class="panel-body">
 
 			<% @users = User.all %>
-			<% @users.each do |user| %>
-  				<h2><%= user.name %></h2>
-  				<h3><%= current_user.weights.last.weight %></h3>
-			<% end %>
+
+			<table class="table">
+			            <thead>
+			              <tr>
+		              	    <th>Name</th>
+			                <th>Team</th>
+			                <th>Location</th>
+			                <th>% Weight Lost</th>
+			              </tr>
+			            </thead>
 
 
-		<% else %>
-			<%= link_to "Sign up for free", new_user_registration_path, class: "btn btn-primary btn-lg" %>
-		<% end %>
+			            <tbody>
+
+	
+			              <% @users.each do |user| %>
+			                <tr>
+			                        <td><%= user.name %></td>
+			                        <td><%= user.user_team %></td>	
+			                        <td><%= user.user_location %></td>
+			                        <td>10</td>
+			                </tr>
+			              <% end %>
+
+			            </tbody>
+		            </table>
+		</div> 
 	</div>
-</div>
+
+
+	<div class="panel panel-default">
+
+		<div class="panel-heading center">
+			<h2>Location Statistics</h2>
+		</div>
+
+		<div class="panel-body">
+
+			<table class="table">
+			            <thead>
+			              <tr>
+		              	    <th>Location</th>
+			                <th>Weight Lost (lbs)</th>
+			              </tr>
+			            </thead>
+
+
+			            <tbody>
+
+		                	<tr>
+			                        <td>Atlanta</td>
+			                        <td>100</td>	
+		                	</tr>
+
+		                	<tr>
+			                        <td>Cambridge</td>
+			                        <td>50</td>	
+		                	</tr>
+		                	<tr>
+			                        <td>San Mateo</td>
+			                        <td>70</td>	
+		                	</tr>
+
+			            </tbody>
+		            </table>
+		</div> 
+	</div>
+
+
+	<div class="panel panel-default">
+
+		<div class="panel-heading center">
+			<h2>Team Statistics</h2>
+		</div>
+
+		<div class="panel-body">
+
+			<table class="table">
+			            <thead>
+			              <tr>
+		              	    <th>Team</th>
+			                <th>Weight Lost (lbs)</th>
+			              </tr>
+			            </thead>
+
+
+			            <tbody>
+
+		                	<tr>
+			                        <td>Protect</td>
+			                        <td>100</td>	
+		                	</tr>
+
+		                	<tr>
+			                        <td>Perform</td>
+			                        <td>50</td>	
+		                	</tr>
+
+			            </tbody>
+		            </table>
+		</div> 
+	</div>
+<% end %>
