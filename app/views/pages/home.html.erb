@@ -6,7 +6,16 @@
 	
 	<div class="mod-signup">
 		<% if user_signed_in? %>
-		Show Dashboard Here
+			
+  			<div>Signed in as... <%= current_user.email %></div>
+			Show Dashboard Here
+
+			<% @users = User.all %>
+			<% @users.each do |user| %>
+  				<%= user.email %><br/>
+			<% end %>
+
+
 		<% else %>
 			<%= link_to "Sign up for free", new_user_registration_path, class: "btn btn-primary btn-lg" %>
 		<% end %>
