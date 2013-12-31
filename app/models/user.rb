@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :weights
 
+  validates :name, presence: true
+  validates :user_team, presence: true
+  validates :user_location, presence: true
+
 end
