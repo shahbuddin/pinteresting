@@ -25,7 +25,7 @@
 		              	    <th>Name</th>
 			                <th>Team</th>
 			                <th>Location</th>
-			                <th>% Weight Lost</th>
+			                <th>% Weight Change</th>
 			              </tr>
 			            </thead>
 
@@ -34,11 +34,18 @@
 
 	
 			              <% @users.each do |user| %>
+
 			                <tr>
 			                        <td><%= user.name %></td>
 			                        <td><%= user.user_team %></td>	
 			                        <td><%= user.user_location %></td>
-			                        <td><%= user.weights.last.weight_loss_percentage %></td>
+
+			                        <% if user.weights.last.nil? %>
+			                        	<td>0.0</td>
+		                        	<% else %>
+		                        		<td><%= user.weights.last.weight_loss_percentage %></td>
+	                        		<% end %>
+		                     
 			                </tr>
 			              <% end %>
 
@@ -71,15 +78,17 @@
 		            	<% @atlanta = @users.select { |user| user.user_location == 'Atlanta'} %>
 
 		            	<% @atlanta.each do |user| %>
-		            		<% user.weights.last.weight %>
-		            		<% atlanta_weight_array.push((user.weights.last.weight - user.weights.first.weight).abs) %>
+		            		<% if !user.weights.last.nil? %>
+		            			<% user.weights.last.weight %>
+		            			<% atlanta_weight_array.push((user.weights.last.weight - user.weights.first.weight).abs) %>
+	            			<% end %>
 		            	<% end %>
 
 
 		                	<tr>
 			                        <td>Atlanta</td>
-			                        <% if atlanta_weight_array.empty? %>
-			                        	<td>0</td>
+			                        <% if atlanta_weight_array.empty? | atlanta_weight_array.nil? %>
+			                        	<td>0.0</td>
 		                        	<% else%> 
 			                        	<td><%= atlanta_weight_array.inject(:+) %></td>
 		                        	<% end %>	
@@ -90,13 +99,15 @@
 		                	<% @cambridge = @users.select { |user| user.user_location == 'Cambridge'} %>
 
 		                	<% @cambridge.each do |user| %>
-		                		<% user.weights.last.weight %>
-		                		<% cambridge_weight_array.push((user.weights.last.weight - user.weights.first.weight).abs) %>
+		                		<% if !user.weights.last.nil? %>
+			                		<% user.weights.last.weight %>
+			                		<% cambridge_weight_array.push((user.weights.last.weight - user.weights.first.weight).abs) %>
+		                		<% end %>
 		                	<% end %>
 
 		                	<tr>
 			                        <td>Cambridge</td>
-			                        <% if cambridge_weight_array.empty? %>
+			                        <% if cambridge_weight_array.empty? | cambridge_weight_array.nil?%>
 			                        	<td>0</td>
 		                        	<% else%> 
 			                        	<td><%= cambridge_weight_array.inject(:+) %></td>
@@ -107,13 +118,15 @@
 			             <% @san_mateo = @users.select { |user| user.user_location == 'San Mateo'} %>
 
 			             <% @san_mateo.each do |user| %>
-			             	<% user.weights.last.weight %>
-			             	<% san_mateo_weight_array.push((user.weights.last.weight - user.weights.first.weight).abs) %>
+			             	<% if !user.weights.last.nil? %>
+				             	<% user.weights.last.weight %>
+				             	<% san_mateo_weight_array.push((user.weights.last.weight - user.weights.first.weight).abs) %>
+			             	<% end %>
 			             <% end %>   	
 
 		                	<tr>
 			                        <td>San Mateo</td>
-			                        <% if san_mateo_weight_array.empty? %>
+			                        <% if san_mateo_weight_array.empty? | san_mateo_weight_array.nil?%>
 			                        	<td>0</td>
 		                        	<% else%> 	
 		                        		<td><%= san_mateo_weight_array.inject(:+) %></td>
@@ -149,13 +162,14 @@
 			             <% @protect_users = @users.select { |user| user.user_team == 'Protect'} %>
 
 			             <% @protect_users.each do |user| %>
-			             	<% user.weights.last.weight %>
-			             	<% protect_weight_array.push ((user.weights.last.weight - user.weights.first.weight).abs) %>
+			             	<% if !user.weights.last.nil? %>
+			             		<% protect_weight_array.push ((user.weights.last.weight - user.weights.first.weight).abs) %>
+		             		<% end %>
 			             <% end %>   	
 
 		                	<tr>
 			                        <td>Protect</td>
-			                        <% if protect_weight_array.empty? %>
+			                        <% if protect_weight_array.empty? | protect_weight_array.nil? %>
 			                        	<td>0</td>
 		                        	<% else%> 	
 			                        	<td><%= protect_weight_array.inject(:+) %></td>	
@@ -166,13 +180,15 @@
 			             <% @perform_users = @users.select { |user| user.user_team == 'Perform'} %>
 
 			             <% @perform_users.each do |user| %>
-			             	<% perform_weight_array.push ((user.weights.last.weight - user.weights.first.weight).abs) %>
+					<% if !user.weights.last.nil? %>
+			             		<% perform_weight_array.push ((user.weights.last.weight - user.weights.first.weight).abs) %>
+		             		<% end %>
 			             <% end %> 
 
 		                	<tr>
 			                        <td>Perform</td>
-			                        <% if perform_weight_array.empty? %>
-			                        	<td>0</td>
+			                        <% if perform_weight_array.empty? | perform_weight_array.nil? %>
+			                        	<td>0.0</td>
 		                        	<% else%> 	
 			                        	<td><%= perform_weight_array.inject(:+) %></td>	
 		                        	<% end %>
