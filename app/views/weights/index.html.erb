@@ -11,6 +11,7 @@
               <tr>
                 <th>Date</th>
                 <th>Weight</th>
+                <th>Weight Lost (%)</th>
                 <th></th>
                 <th></th>
               </tr>
@@ -22,6 +23,7 @@
                   <% if weight.user == current_user %>
                         <td><%= weight.created_at.to_date %></td>
                         <td><%= weight.weight %></td>
+                        <td><%= weight.weight_loss_percentage %>
                         <td><%= link_to 'Edit', edit_weight_path(weight) %></td>
                         <td><%= link_to 'Delete', weight, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 

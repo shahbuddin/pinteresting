@@ -34,5 +34,5 @@
 
 </div>
 
-
-
+<% @weight.weight_loss_percentage = 100 * (@weight.weight - current_user.weights.first.weight)/(current_user.weights.first.weight) %>
+<% @weight.save %>
