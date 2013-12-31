@@ -1,40 +1,46 @@
-<h1>Listing weights</h1>
+<div class="panel panel-default">
 
-<table>
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>User</th>
-      <th>Weight</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <div class="panel-heading">
+    <h2>Weight Log</h2>
+  </div>
 
-  <tbody>
-    <% @weights.each do |weight| %>
-      <tr>
-        <td><%= weight.created_at.to_date %></td>
-        <td><%= weight.user.email if weight.user %></td>
-        <td><%= weight.weight %></td>
-        <td><%= link_to 'Show', weight %></td>
+  <div class="panel-body">
 
-        <% if weight.user == current_user %>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Weight</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
 
-          <td><%= link_to 'Edit', edit_weight_path(weight) %></td>
-          <td><%= link_to 'Destroy', weight, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <tbody>
+              <% @weights.each do |weight| %>
+                <tr>
+                  <% if weight.user == current_user %>
+                        <td><%= weight.created_at.to_date %></td>
+                        <td><%= weight.weight %></td>
+                        <td><%= link_to 'Edit', edit_weight_path(weight) %></td>
+                        <td><%= link_to 'Delete', weight, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
-        <% end %>
-      
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                  <% end %>
+                
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
 
-<br>
+    </div>
 
+    <% if user_signed_in? %>
 
-<% if user_signed_in? %>
-    <%= link_to 'New Weight', new_weight_path %>
+    <div class="panel-footer center">
+      <%= link_to 'New Weight', new_weight_path, class: "btn btn-primary" %>
+    </div>
+    
 <% end %>
+
+
+</div>

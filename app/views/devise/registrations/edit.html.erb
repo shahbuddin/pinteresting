@@ -38,6 +38,17 @@
                       <%= f.password_field :current_password, class: "form-control" %>
                   </div>
 
+                    <div class="form-group">
+                      <%= f.label :office %><br />          
+                    <%= f.select :user_location, options_for_select([["Atlanta", "a"], ["Cambridge", "c"], ["San Mateo", "s"]]) %>
+                      
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.label :team %><br />          
+                    <%= f.select :user_team, options_for_select(["Protect", "Perform"]), class: "form-control" %>
+                    </div>
+
                   <div class="form-group">
                       <%= f.submit "Update", class: "btn btn-primary" %>
                   </div>

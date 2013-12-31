@@ -8,11 +8,12 @@
 		<% if user_signed_in? %>
 			
   			<div>Signed in as... <%= current_user.email %></div>
-			Show Dashboard Here
+			<div>Show Dashboard Here</div>
 
 			<% @users = User.all %>
 			<% @users.each do |user| %>
-  				<%= user.email %><br/>
+  				<h2><%= user.name %></h2>
+  				<h3><%= current_user.weights.last.weight %></h3>
 			<% end %>
 
 
