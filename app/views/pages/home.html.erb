@@ -25,7 +25,7 @@
 		              	    <th>Name</th>
 			                <th>Team</th>
 			                <th>Location</th>
-			                <th>% Change</th>
+			                <th>% Weight Change</th>
 			              </tr>
 			            </thead>
 
@@ -108,7 +108,7 @@
 		                	<tr>
 			                        <td>Cambridge</td>
 			                        <% if cambridge_weight_array.empty? | cambridge_weight_array.nil?%>
-			                        	<td>0</td>
+			                        	<td>0.0</td>
 		                        	<% else%> 
 			                        	<td><%= cambridge_weight_array.inject(:+) %></td>
 			                        <% end %>	
@@ -127,7 +127,7 @@
 		                	<tr>
 			                        <td>San Mateo</td>
 			                        <% if san_mateo_weight_array.empty? | san_mateo_weight_array.nil?%>
-			                        	<td>0</td>
+			                        	<td>0.0</td>
 		                        	<% else%> 	
 		                        		<td><%= san_mateo_weight_array.inject(:+) %></td>
 	                        		<% end %>
@@ -170,7 +170,7 @@
 		                	<tr>
 			                        <td>Protect</td>
 			                        <% if protect_weight_array.empty? | protect_weight_array.nil? %>
-			                        	<td>0</td>
+			                        	<td>0.0</td>
 		                        	<% else%> 	
 			                        	<td><%= protect_weight_array.inject(:+) %></td>	
 		                        	<% end %>
