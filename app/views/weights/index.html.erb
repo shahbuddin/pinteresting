@@ -56,6 +56,3 @@
                               <td><%= user.weights.last.weight_loss_percentage %></td>
                       </tr>
 <% end %>
-
-
-@restaurants = @user.user_location.all(:conditions => ["restaurants.food_category = ?", 
