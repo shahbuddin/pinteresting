@@ -87,8 +87,8 @@ Pinteresting::Application.configure do
     ActionMailer::Base.smtp_settings = {            
       :address                   => "smtp.zoho.com", 
       :port                         => 465,                 
-      :user_name               => 'admin@purgeoff.com',
-      :password                 => 'password',         
+      :user_name               => ENV["ZOHO_USERNAME"],
+      :password                 => ENV["ZOHO_PASSWORD"],         
       :authentication          => :login,
       :ssl                            => true,
       :tls                            => true,
