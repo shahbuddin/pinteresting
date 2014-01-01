@@ -79,7 +79,7 @@ Pinteresting::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Required for Heroku
-  config.action_mailer.default_url_options = { :host => 'www.purgeoff.com' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   # Required for Zoho
   # Action Mailer
@@ -88,8 +88,9 @@ Pinteresting::Application.configure do
       :address                   => "smtp.zoho.com", 
       :port                         => 465,                 
       :user_name               => ENV["ZOHO_USERNAME"],
+      :domain                    => 'purgeoff.com',
       :password                 => ENV["ZOHO_PASSWORD"],         
-      :authentication          => :login,
+      :authentication          => :plain,
       :ssl                            => true,
       :tls                            => true,
       :enable_starttls_auto => true    
