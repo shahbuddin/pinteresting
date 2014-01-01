@@ -41,7 +41,9 @@
 			                        <td><%= user.user_location %></td>
 
 			                        <% if user.weights.last.nil? %>
-			                        	<td>0.0</td>
+			                        	<td>0</td>
+		                        	<% elsif user.weights.last.weight_loss_percentage == 0 %>
+		                        		<td>0</td>
 		                        	<% else %>
 		                        		<td><%= user.weights.last.weight_loss_percentage %></td>
 	                        		<% end %>
@@ -88,7 +90,7 @@
 		                	<tr>
 			                        <td>Atlanta</td>
 			                        <% if atlanta_weight_array.empty? | atlanta_weight_array.nil? %>
-			                        	<td>0.0</td>
+			                        	<td>0</td>
 		                        	<% else%> 
 			                        	<td><%= atlanta_weight_array.inject(:+) %></td>
 		                        	<% end %>	
@@ -108,12 +110,33 @@
 		                	<tr>
 			                        <td>Cambridge</td>
 			                        <% if cambridge_weight_array.empty? | cambridge_weight_array.nil?%>
-			                        	<td>0.0</td>
+			                        	<td>0</td>
 		                        	<% else%> 
 			                        	<td><%= cambridge_weight_array.inject(:+) %></td>
 			                        <% end %>	
 		                	</tr>
 		                	
+
+				<% cr_weight_array = Array.new %>
+		            	<% @cr = @users.select { |user| user.user_location == 'Costa Rica'} %>
+
+		            	<% @cr.each do |user| %>
+		            		<% if !user.weights.last.nil? %>
+		            			<% user.weights.last.weight %>
+		            			<% cr_weight_array.push((user.weights.last.weight - user.weights.first.weight).abs) %>
+	            			<% end %>
+		            	<% end %>
+
+
+		                	<tr>
+			                        <td>Costa Rica</td>
+			                        <% if cr_weight_array.empty? | atlanta_weight_array.nil? %>
+			                        	<td>0</td>
+		                        	<% else%> 
+			                        	<td><%= cr_weight_array.inject(:+) %></td>
+		                        	<% end %>	
+		                	</tr>
+
 			             <% san_mateo_weight_array = Array.new %>
 			             <% @san_mateo = @users.select { |user| user.user_location == 'San Mateo'} %>
 
@@ -127,7 +150,7 @@
 		                	<tr>
 			                        <td>San Mateo</td>
 			                        <% if san_mateo_weight_array.empty? | san_mateo_weight_array.nil?%>
-			                        	<td>0.0</td>
+			                        	<td>0</td>
 		                        	<% else%> 	
 		                        		<td><%= san_mateo_weight_array.inject(:+) %></td>
 	                        		<% end %>
@@ -170,7 +193,7 @@
 		                	<tr>
 			                        <td>Protect</td>
 			                        <% if protect_weight_array.empty? | protect_weight_array.nil? %>
-			                        	<td>0.0</td>
+			                        	<td>0</td>
 		                        	<% else%> 	
 			                        	<td><%= protect_weight_array.inject(:+) %></td>	
 		                        	<% end %>
@@ -188,7 +211,7 @@
 		                	<tr>
 			                        <td>Perform</td>
 			                        <% if perform_weight_array.empty? | perform_weight_array.nil? %>
-			                        	<td>0.0</td>
+			                        	<td>0</td>
 		                        	<% else%> 	
 			                        	<td><%= perform_weight_array.inject(:+) %></td>	
 		                        	<% end %>

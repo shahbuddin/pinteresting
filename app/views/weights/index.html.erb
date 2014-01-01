@@ -46,13 +46,3 @@
 
 
 </div>
-
-
-<% @users.each do |user| %>
-                      <tr>
-                              <td><%= user.name %></td>
-                              <td><%= user.user_team %></td>  
-                              <td><%= user.user_location %></td>
-                              <td><%= user.weights.last.weight_loss_percentage %></td>
-                      </tr>
-<% end %>
