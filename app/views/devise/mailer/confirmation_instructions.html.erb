@@ -1,5 +1,27 @@
-<p>Welcome <%= @user.name %>!</p>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "Purge Off", root_path, class: "navbar-brand" %>
+      </div>
+  </div ><!-- /.container -->
+</nav>
 
-<p>You can confirm your account email through the link below:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token) %></p>
+<div class="container">
+	<p>Welcome <%= @user.name %>!</p>
+
+	<p>Thanks for signing up for the Purge Off competition. You can confirm your account email through the link below:</p>
+
+	<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token) %></p>
+
+	<p>Regards,</p>
+
+	<p>Purge Off Admin</p>
+</div>
