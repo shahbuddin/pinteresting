@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Pinteresting::Application.load_tasks
+Purgeoff::Application.load_tasks

@@ -1,4 +1,4 @@
-Pinteresting::Application.routes.draw do
+Purgeoff::Application.routes.draw do
   resources :weights
 
   devise_for :users
