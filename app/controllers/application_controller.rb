@@ -12,9 +12,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :name
     devise_parameter_sanitizer.for(:sign_up) << :user_team
     devise_parameter_sanitizer.for(:sign_up) << :user_location
-    devise_parameter_sanitizer.for(:sign_up) << :confirmed_at
-    devise_parameter_sanitizer.for(:sign_up) << :confirmation_sent_at
-    devise_parameter_sanitizer.for(:sign_up) << :unconfirmed_email
     devise_parameter_sanitizer.for(:account_update) << :name
     devise_parameter_sanitizer.for(:account_update) << :user_team
     devise_parameter_sanitizer.for(:account_update) << :user_location
