@@ -1,7 +1,7 @@
 class WeightsController < ApplicationController
   before_action :set_weight, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   # GET /weights
   # GET /weights.json
