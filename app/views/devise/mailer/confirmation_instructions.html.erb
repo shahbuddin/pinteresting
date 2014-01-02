@@ -1,9 +1,5 @@
-<p>Hey <%= @user.name %>,</p>
+<p>Welcome <%= @user.name %>!</p>
 
-<p>Thanks for signing up! You can confirm your account through the link below:</p>
+<p>You can confirm your account email through the link below:</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token) %></p>
-
-<p>Regards,</p>
-
-<p>Sarosh Shahbuddin</p>
