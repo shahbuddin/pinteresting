@@ -137,6 +137,27 @@
 		                        	<% end %>	
 		                	</tr>
 
+				<% ny_weight_array = Array.new %>
+		            	<% @ny = @users.select { |user| user.user_location == 'New York'} %>
+
+		            	<% @ny.each do |user| %>
+		            		<% if !user.weights.last.nil? %>
+		            			<% user.weights.last.weight %>
+		            			<% ny_weight_array.push((user.weights.last.weight - user.weights.first.weight).abs) %>
+	            			<% end %>
+		            	<% end %>
+
+
+		                	<tr>
+			                        <td>New York</td>
+			                        <% if ny_weight_array.empty? | ny_weight_array.nil? %>
+			                        	<td>0</td>
+		                        	<% else%> 
+			                        	<td><%= ny_weight_array.inject(:+) %></td>
+		                        	<% end %>	
+		                	</tr>
+
+
 			             <% san_mateo_weight_array = Array.new %>
 			             <% @san_mateo = @users.select { |user| user.user_location == 'San Mateo'} %>
 
