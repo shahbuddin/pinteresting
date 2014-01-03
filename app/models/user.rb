@@ -11,5 +11,6 @@ class User < ActiveRecord::Base
   validates :user_team, presence: true
   validates :user_location, presence: true
   validates_format_of :email, :with => /\A([^@\s]+)@(akamai\.com)\z/
+  validates_format_of :name, :with => /\A[^0-9`!@#\$%\^&*+_=\<\>]+\z/
 
 end

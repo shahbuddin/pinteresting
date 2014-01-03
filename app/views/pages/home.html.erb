@@ -69,7 +69,7 @@
 			            <thead>
 			              <tr>
 		              	    <th>Location</th>
-			                <th>Weight Lost (lbs)</th>
+			                <th>Weight Change (lbs)</th>
 			              </tr>
 			            </thead>
 
@@ -81,8 +81,7 @@
 
 		            	<% @atlanta.each do |user| %>
 		            		<% if !user.weights.last.nil? %>
-		            			<% user.weights.last.weight %>
-		            			<% atlanta_weight_array.push((user.weights.last.weight - user.weights.first.weight).abs) %>
+		            			<% atlanta_weight_array.push(user.weights.last.weight - user.weights.first.weight) %>
 	            			<% end %>
 		            	<% end %>
 
@@ -102,8 +101,7 @@
 
 		                	<% @cambridge.each do |user| %>
 		                		<% if !user.weights.last.nil? %>
-			                		<% user.weights.last.weight %>
-			                		<% cambridge_weight_array.push((user.weights.last.weight - user.weights.first.weight).abs) %>
+			                		<% cambridge_weight_array.push(user.weights.last.weight - user.weights.first.weight) %>
 		                		<% end %>
 		                	<% end %>
 
@@ -122,8 +120,7 @@
 
 		            	<% @cr.each do |user| %>
 		            		<% if !user.weights.last.nil? %>
-		            			<% user.weights.last.weight %>
-		            			<% cr_weight_array.push((user.weights.last.weight - user.weights.first.weight).abs) %>
+		            			<% cr_weight_array.push(user.weights.last.weight - user.weights.first.weight) %>
 	            			<% end %>
 		            	<% end %>
 
@@ -143,7 +140,7 @@
 		            	<% @ny.each do |user| %>
 		            		<% if !user.weights.last.nil? %>
 		            			<% user.weights.last.weight %>
-		            			<% ny_weight_array.push((user.weights.last.weight - user.weights.first.weight).abs) %>
+		            			<% ny_weight_array.push(user.weights.last.weight - user.weights.first.weight) %>
 	            			<% end %>
 		            	<% end %>
 
@@ -163,8 +160,7 @@
 
 			             <% @san_mateo.each do |user| %>
 			             	<% if !user.weights.last.nil? %>
-				             	<% user.weights.last.weight %>
-				             	<% san_mateo_weight_array.push((user.weights.last.weight - user.weights.first.weight).abs) %>
+				             	<% san_mateo_weight_array.push(user.weights.last.weight - user.weights.first.weight) %>
 			             	<% end %>
 			             <% end %>   	
 
@@ -195,7 +191,7 @@
 			            <thead>
 			              <tr>
 		              	    <th>Team</th>
-			                <th>Weight Lost (lbs)</th>
+			                <th>Weight Change (lbs)</th>
 			              </tr>
 			            </thead>
 
@@ -207,7 +203,7 @@
 
 			             <% @protect_users.each do |user| %>
 			             	<% if !user.weights.last.nil? %>
-			             		<% protect_weight_array.push ((user.weights.last.weight - user.weights.first.weight).abs) %>
+			             		<% protect_weight_array.push (user.weights.last.weight - user.weights.first.weight) %>
 		             		<% end %>
 			             <% end %>   	
 
@@ -225,7 +221,7 @@
 
 			             <% @perform_users.each do |user| %>
 					<% if !user.weights.last.nil? %>
-			             		<% perform_weight_array.push ((user.weights.last.weight - user.weights.first.weight).abs) %>
+			             		<% perform_weight_array.push (user.weights.last.weight - user.weights.first.weight) %>
 		             		<% end %>
 			             <% end %> 
 
