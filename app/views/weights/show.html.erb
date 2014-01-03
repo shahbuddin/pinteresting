@@ -18,7 +18,6 @@
 		              <tr>
 		                      <td><%= @weight.created_at.to_date %></td>
 		                      <td><%= @weight.weight %></td>
-		                   
 		              </tr>
 		          </tbody>
 		</table>
@@ -34,5 +33,6 @@
 
 </div>
 
-<% @weight.weight_loss_percentage = 100 * (@weight.weight - current_user.weights.first.weight)/(current_user.weights.first.weight) %>
+<% @weight.weight_loss_percentage = 100 * (@weight.weight - current_user.weights.first.weight)/(current_user.weights.first.weight.to_f.floor) %>
 <% @weight.save %>
+
